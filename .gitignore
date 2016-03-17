@@ -1,0 +1,66 @@
+//Casey Knox
+//387 Midterm
+
+
+#include <LiquidCrystal.h> //library for the 
+
+//initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(4, 6, 10, 11, 12, 13);
+
+int button1 = 1;
+int button2 = 2;
+int button3 = 3;
+int count = 0;
+int b1 = 0;
+int b2 = 0;
+int b3 = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+ 
+  pinMode( 7, INPUT); //button1
+  pinMode( 8, INPUT); //button2
+  pinMode( 9, INPUT); //button3
+
+
+  lcd.begin(16,2); 
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  lcd.setCursor(0,1); 
+
+  //generate random numbers for math problem 
+  int random1 = random(0, 6);
+  int random2 = random(0, 6);
+  
+  while (count <= random1 + random2) {
+  
+  //read the values of the button (High or low)
+  b1 = digitalRead(7); 
+  b2 = digitalRead(8);
+  b3 = digitalRead(9);
+
+  char num1 = random1;
+  char num2 = random2;
+
+  //String question = random1 + " + " + random2 + " = ?";
+  //lcd.print( num1 + " + " + num2 + " = ?");
+
+  //adds the value of the button pressed to the count
+  if (b1 == HIGH) {
+    count = count + button1;
+  }
+  else if (b2 == HIGH) {
+    count = count + button2;
+  }
+   else if (b3 == HIGH) {
+    count = count + button3;
+   }  
+ }
+
+
+
+
+}
